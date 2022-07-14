@@ -14,6 +14,7 @@ CREATE TABLE `drivers`  (
                             `is_deleted` bit(1) NOT NULL DEFAULT b'0',
                             `login` varchar(255) DEFAULT NULL,
                             `password` varchar(255) DEFAULT NULL,
+                            UNIQUE (login),
                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 

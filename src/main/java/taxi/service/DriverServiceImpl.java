@@ -44,12 +44,4 @@ public class DriverServiceImpl implements DriverService {
     public Optional<Driver> findByLogin(String login) {
         return driverDao.findByLogin(login);
     }
-
-    @Override
-    public boolean checkPassword(String password, String repeatedPassword) {
-        if (!password.equals(repeatedPassword)) {
-            throw new RuntimeException("Passwords are not equal");
-        }
-        return true;
-    }
 }
