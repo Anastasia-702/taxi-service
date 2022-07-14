@@ -29,11 +29,12 @@ public class AddDriverController extends HttpServlet {
         String password = req.getParameter("password");
         String repeatedPassword = req.getParameter("repeat_password");
         try {
-            if (driverService.checkPassword(password, repeatedPassword)) {
-                Driver driver = new Driver(name, licenseNumber, login, password);
-                driverService.create(driver);
-                resp.sendRedirect(req.getContextPath() + "/index");
+            if (!password.equals(repeatedPassword)) {
+                throw new RuntimeException("Passwords are not equal");
             }
+            Driver driver = new Driver(name, licenseNumber, login, password);
+            driverService.create(driver);
+            resp.sendRedirect(req.getContextPath() + "/index");
         } catch (RuntimeException e) {
             req.setAttribute("errorMsg", e.getMessage());
             req.getRequestDispatcher("/WEB-INF/views/drivers/add.jsp").forward(req, resp);
