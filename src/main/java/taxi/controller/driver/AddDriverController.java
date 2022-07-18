@@ -33,6 +33,9 @@ public class AddDriverController extends HttpServlet {
                 throw new RuntimeException("Passwords are not equal");
             }
             Driver driver = new Driver(name, licenseNumber, login, password);
+            if (driverService.findByLogin(driver.getLogin()).isPresent()) {
+                throw new RuntimeException("This login already exists " + driver.getLogin());
+            }
             driverService.create(driver);
             resp.sendRedirect(req.getContextPath() + "/index");
         } catch (RuntimeException e) {
