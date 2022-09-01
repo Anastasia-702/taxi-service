@@ -23,8 +23,8 @@ Project has a three-tier architecture:
 - JDBC API;
 - Apache Tomcat v.9.0.50;
 - Apache Maven;
-- MySql;
-- HTMl;
+- MySQL;
+- HTML;
 - CSS.
 
 ## Launch
